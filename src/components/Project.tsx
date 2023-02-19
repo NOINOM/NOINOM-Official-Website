@@ -15,6 +15,18 @@ interface IProject {
   background: ImageData;
   image: ImageData[] | null;
   isRight: boolean;
+  index: number;
+}
+
+interface IOptionbar {
+  index: number;
+  download: {
+    windows: string | null;
+    macos: string | null;
+    linux: string | null;
+    android: string | null;
+    ios: string | null;
+  } | null;
 }
 
 const Project = (props: IProject) => {
@@ -44,7 +56,19 @@ const Project = (props: IProject) => {
                   isDetail={detail}
                 />
               </S.ArrowImgNav>
-              {props.download.windows == null ? null : (
+            </>
+          )}
+        </S.ButtonNavbar>
+      </S.TitleNav>
+    </S.BackgorundImg>
+  );
+};
+
+export default Project;
+
+/**
+ * 
+ * {props.download.windows == null ? null : (
                 <S.SelectOption>Windows 다운로드</S.SelectOption>
               )}
               {props.download.macos == null ? null : (
@@ -59,12 +83,4 @@ const Project = (props: IProject) => {
               {props.download.ios == null ? null : (
                 <S.SelectOption>iOS 다운로드</S.SelectOption>
               )}
-            </>
-          )}
-        </S.ButtonNavbar>
-      </S.TitleNav>
-    </S.BackgorundImg>
-  );
-};
-
-export default Project;
+ */

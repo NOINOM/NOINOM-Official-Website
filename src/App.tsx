@@ -1,3 +1,4 @@
+import { SetStateAction, useState } from "react";
 import Header from "./components/Header";
 import MainBottomBar from "./components/MainBottomBar";
 import MainIntoduce from "./components/MainIntoduce";
@@ -14,15 +15,29 @@ interface Ibrowser {
 
 const browser: Ibrowser | null = detect();
 
-const CheckOS = () => {
+const CheckOS = (setIndex: React.Dispatch<React.SetStateAction<number>>) => {
   let Os = browser?.os || "";
-  console.log(Os);
+  console.log(Os.slice(0, 3));
 
-  if (Os === "Windows") {
+  if (Os.slice(0, 3) === "Win") {
+    setIndex(1);
+  }
+  if (Os.slice(0, 3) === "Mac") {
+    setIndex(2);
+  }
+  if (Os.slice(0, 3) === "Lin") {
+    setIndex(3);
+  }
+  if (Os.slice(0, 3) === "And") {
+    setIndex(4);
+  }
+  if (Os.slice(0, 3) === "iOS") {
+    setIndex(5);
   }
 };
 
 function App() {
+  const [index, setIndex] = useState<number>(1);
   return (
     <>
       <Header></Header>
@@ -35,6 +50,7 @@ function App() {
         background={backgroundImg1}
         image={null}
         isRight={false}
+        index={index}
       ></Project>
       <Project
         title="Rolling Root 3D"
@@ -49,10 +65,11 @@ function App() {
         background={backgroundImg1}
         image={null}
         isRight={true}
+        index={index}
       ></Project>
       <button
         onClick={() => {
-          CheckOS();
+          CheckOS(setIndex);
         }}
       >
         app

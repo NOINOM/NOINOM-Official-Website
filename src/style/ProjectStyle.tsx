@@ -19,14 +19,18 @@ interface IisRight {
 }
 
 export const ProjTitle = styled.p`
+  background-color: gray;
+  width: 30rem;
   font-size: 3.5rem;
   font-weight: bold;
   margin: 0rem 0rem 1rem 0rem;
   float: ${(props: IisRight) => (props.isRight ? "right" : "left")};
+  text-align: ${(props: IisRight) => (props.isRight ? "right" : "left")};
 `;
 
 export const ProjContext = styled.p`
-  width: 80%;
+  width: 30rem;
+  background-color: gray;
   word-break: keep-all;
   font-size: 1.5rem;
   float: ${(props: IisRight) => (props.isRight ? "right" : "left")};
