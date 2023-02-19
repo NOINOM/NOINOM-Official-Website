@@ -3,6 +3,24 @@ import MainBottomBar from "./components/MainBottomBar";
 import MainIntoduce from "./components/MainIntoduce";
 import Project from "./components/Project";
 import backgroundImg1 from "./asset/Background1.png";
+import { detect } from "detect-browser";
+
+interface Ibrowser {
+  name: string | null;
+  os: string | null;
+  type: string | null;
+  version: string | null;
+}
+
+const browser: Ibrowser | null = detect();
+
+const CheckOS = () => {
+  let Os = browser?.os || "";
+  console.log(Os);
+
+  if (Os === "Windows") {
+  }
+};
 
 function App() {
   return (
@@ -32,7 +50,13 @@ function App() {
         image={null}
         isRight={true}
       ></Project>
-      <div>app</div>
+      <button
+        onClick={() => {
+          CheckOS();
+        }}
+      >
+        app
+      </button>
     </>
   );
 }

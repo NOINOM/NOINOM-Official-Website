@@ -1,5 +1,6 @@
 import * as S from "../style/ProjectStyle";
 import Arrow from "../asset/arrow-down.png";
+import { useState } from "react";
 
 interface IProject {
   title: string;
@@ -17,12 +18,14 @@ interface IProject {
 }
 
 const Project = (props: IProject) => {
+  const [detail, setDetail] = useState<boolean>(false);
+  const selectTitle: string[] = ["Windows", "macOS", "Linux", "Android", "iOS"];
   return (
     <S.BackgorundImg>
       <S.TitleNav isRight={props.isRight}>
-        <S.ProjTitle>{props.title}</S.ProjTitle>
-        <S.ProjContext>{props.context}</S.ProjContext>
-        <S.ButtonNavbar>
+        <S.ProjTitle isRight={props.isRight}>{props.title}</S.ProjTitle>
+        <S.ProjContext isRight={props.isRight}>{props.context}</S.ProjContext>
+        <S.ButtonNavbar isRight={props.isRight}>
           {props.download == null ? (
             <S.NoLink
               onClick={() => {
@@ -33,8 +36,13 @@ const Project = (props: IProject) => {
             </S.NoLink>
           ) : (
             <>
+              <></>
               <S.ArrowImgNav>
-                <S.ArrowImg src={Arrow} alt="" />
+                <S.ArrowImg
+                  src={Arrow}
+                  onClick={() => setDetail(!detail)}
+                  isDetail={detail}
+                />
               </S.ArrowImgNav>
               {props.download.windows == null ? null : (
                 <S.SelectOption>Windows 다운로드</S.SelectOption>

@@ -11,19 +11,26 @@ export const BackgorundImg = styled.div`
   display: flex;
   align-items: center;
   background-size: cover;
-  backdrop-filter: blur(10px);
+  background-filter: blur(10px);
 `;
+
+interface IisRight {
+  isRight: boolean;
+}
 
 export const ProjTitle = styled.p`
   font-size: 3.5rem;
   font-weight: bold;
   margin: 0rem 0rem 1rem 0rem;
+  float: ${(props: IisRight) => (props.isRight ? "right" : "left")};
 `;
 
 export const ProjContext = styled.p`
   width: 80%;
   word-break: keep-all;
   font-size: 1.5rem;
+  float: ${(props: IisRight) => (props.isRight ? "right" : "left")};
+  text-align: ${(props: IisRight) => (props.isRight ? "right" : "left")};
 `;
 
 export const NoLink = styled.p`
@@ -33,10 +40,6 @@ export const NoLink = styled.p`
   padding: 1rem;
   background-color: #183761;
 `;
-
-interface IisRight {
-  isRight: boolean;
-}
 
 export const TitleNav = styled.nav`
   width: 30%;
@@ -64,22 +67,30 @@ export const SelectOption = styled.div`
   font-weight: bold;
   color: white;
   border: none;
-  margin-top: 1rem;
+  margin-bottom: 0.3rem;
 `;
 
 export const ButtonNavbar = styled.nav`
   margin-top: 8rem;
+  float: ${(props: IisRight) => (props.isRight ? "right" : "left")};
 `;
 
 export const ArrowImgNav = styled.nav`
   position: absolute;
-  margin-left: 17rem;
+  margin-left: 16.3rem;
   padding: 0.85rem 0.5rem;
   background-color: #183761;
 `;
+
+interface IisDetail {
+  isDetail: boolean;
+}
 
 export const ArrowImg = styled.img`
   margin: auto;
   height: 1.5rem;
   width: 1.5rem;
+  transition: 0.5s;
+  transform: ${(props: IisDetail) =>
+    props.isDetail ? `rotate(180deg)` : `rotate(0deg)`};
 `;
