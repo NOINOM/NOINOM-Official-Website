@@ -1,5 +1,20 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import "./index.css";
+
+interface IName {
+  delay: number;
+}
+
+const NameAni = keyframes`
+  0%{
+    opacity:0;
+    padding-top: 1rem;
+  }100%{
+    opacity:1;
+    padding-top: 0rem;
+    padding-bottom: 1rem;
+  }
+`;
 
 export const BottomNavbar = styled.nav`
   display: flex;
@@ -26,4 +41,13 @@ export const Sidebar = styled.div`
   background-color: white;
   margin: 0 2rem;
   border-radius: 50%;
+`;
+
+export const Name = styled.p`
+  margin-bottom: -1rem;
+  opacity: 0;
+  padding-top: 1rem;
+  animation: ${NameAni} 1s;
+  animation-delay: ${(props: IName) => props.delay}s;
+  animation-fill-mode: forwards;
 `;
