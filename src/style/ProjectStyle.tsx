@@ -62,7 +62,7 @@ export const Select = styled.div`
   border: none;
 `;
 
-export const SelectOption = styled.div`
+export const SelectOption = styled.nav`
   text-align: center;
   font-size: 1.2rem;
   width: 14rem;

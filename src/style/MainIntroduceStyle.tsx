@@ -1,5 +1,15 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import "./index.css";
+
+const AniContext = keyframes`
+  0%{
+    opacity :0;
+    margin-top : 10rem;
+  }100%{
+    opacity : 1;
+    margin-top:7rem;
+  }
+`;
 
 export const MainNav = styled.nav`
   width: 100%;
@@ -16,8 +26,9 @@ export const LogoContextWrap = styled.nav`
 
 export const Context = styled.p`
   text-align: center;
-  margin-top: 5rem;
   font-size: 2rem;
   font-family: "Regular";
   color: white;
+  animation: ${AniContext} 1s;
+  animation-fill-mode: forwards;
 `;

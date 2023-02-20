@@ -56,11 +56,11 @@ function App() {
         title="Rolling Root 3D"
         context="Unity3D를 사용해 개발한 Rolling Root 3D는 조근호를 3D로 굴리는 게임입니다."
         download={{
-          windows: "dd",
-          macos: "dd",
-          linux: "dd",
-          android: "dd",
-          ios: "dd",
+          windows: "https://www.naver.com",
+          macos: "https://www.google.com",
+          linux: "https://www.daum.net",
+          android: "https://www.youtube.com",
+          ios: "https://www.laftel.net",
         }}
         background={backgroundImg1}
         image={null}
