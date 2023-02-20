@@ -5,6 +5,9 @@ interface IName {
   delay: number;
 }
 
+interface IisPhone {
+  isPhone: boolean;
+}
 const NameAni = keyframes`
   0%{
     opacity:0;
@@ -25,12 +28,13 @@ export const BottomNavbar = styled.nav`
 `;
 
 export const NameWrap = styled.nav`
-  width: 50rem;
+  width: ${(props: IisPhone) => (props.isPhone ? "20rem" : "50rem")};
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   color: white;
-  font-size: 1.2rem;
+  font-size: ${(props: IisPhone) => (props.isPhone ? "0.8rem" : "1.2rem")};
   letter-spacing: 0.4em;
   font-family: "Regular";
 `;
@@ -39,7 +43,7 @@ export const Sidebar = styled.div`
   width: 0.25rem;
   height: 0.25rem;
   background-color: white;
-  margin: 0 2rem;
+  margin: ${(props: IisPhone) => "0 2rem"};
   border-radius: 50%;
 `;
 
