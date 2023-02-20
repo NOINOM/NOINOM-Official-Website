@@ -1,7 +1,7 @@
 import * as S from "../style/ProjectStyle";
 import Arrow from "../asset/arrow-down.png";
 import BigArrow from "../asset/BigArrow.png";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import ButtonSetting from "../utils/ButtonSetting";
 
 interface IProject {
@@ -24,7 +24,6 @@ interface IProject {
 const Project = (props: IProject) => {
   const [subIdx, setSubIdx] = useState<number>(1);
   const [detail, setDetail] = useState<boolean>(false);
-  const [count, setCount] = useState<boolean>(false);
   const Title: string[] = ["Windows", "macOS", "Linux", "Android", "iOS"];
   const selectTitle: number[] | undefined = ButtonSetting(props.index);
 
@@ -181,58 +180,50 @@ const Project = (props: IProject) => {
             )}
           </S.SubImgFrame>
           {props.download == null ? (
-            <S.NoLink
-              isPhone={props.isPhone}
-              onClick={() => console.log(selectTitle)}
-            >
-              개발 진행 중
-            </S.NoLink>
+            <S.NoLink isPhone={props.isPhone}>개발 진행 중</S.NoLink>
           ) : (
             <>
               {selectTitle != null && selectTitle[0] === props.index - 1 ? (
-                selectTitle[0] === 0 ? (
+                selectTitle[0] === 0 && props.download.windows != null ? (
                   <S.SelectOption
                     isPhone={props.isPhone}
                     onClick={() => window.open(props.download?.windows!)}
                   >
                     {Title[selectTitle[0]]} 다운로드
                   </S.SelectOption>
-                ) : selectTitle[0] === 1 ? (
+                ) : selectTitle[0] === 1 && props.download.macos != null ? (
                   <S.SelectOption
                     isPhone={props.isPhone}
                     onClick={() => window.open(props.download?.macos!)}
                   >
                     {Title[selectTitle[0]]} 다운로드
                   </S.SelectOption>
-                ) : selectTitle[0] === 2 ? (
+                ) : selectTitle[0] === 2 && props.download.linux != null ? (
                   <S.SelectOption
                     isPhone={props.isPhone}
                     onClick={() => window.open(props.download?.linux!)}
                   >
                     {Title[selectTitle[0]]} 다운로드
                   </S.SelectOption>
-                ) : selectTitle[0] === 3 ? (
+                ) : selectTitle[0] === 3 && props.download.android != null ? (
                   <S.SelectOption
                     isPhone={props.isPhone}
                     onClick={() => window.open(props.download?.android!)}
                   >
                     {Title[selectTitle[0]]} 다운로드
                   </S.SelectOption>
-                ) : (
+                ) : selectTitle[0] === 4 && props.download.ios != null ? (
                   <S.SelectOption
                     isPhone={props.isPhone}
                     onClick={() => window.open(props.download?.ios!)}
                   >
                     {Title[selectTitle[0]]} 다운로드
                   </S.SelectOption>
+                ) : (
+                  <S.NoLink isPhone={props.isPhone}>개발 진행 중</S.NoLink>
                 )
               ) : (
-                <S.NoLink
-                  isPhone={props.isPhone}
-                  onClick={() => console.log(selectTitle)}
-                >
-                  개발 진행 중
-                </S.NoLink>
+                <S.NoLink isPhone={props.isPhone}>개발 진행 중</S.NoLink>
               )}
             </>
           )}
@@ -243,22 +234,3 @@ const Project = (props: IProject) => {
 };
 
 export default Project;
-
-/**
- * 
- * {props.download.windows == null ? null : (
-   <S.SelectOption>Windows 다운로드</S.SelectOption>
-   )}
-    {props.download.macos == null ? null : (
-      <S.SelectOption>macOS 다운로드</S.SelectOption>
-      )}
-    {props.download.linux == null ? null : (
-      <S.SelectOption>Linux 다운로드</S.SelectOption>
-      )}
-    {props.download.android == null ? null : (
-      <S.SelectOption>Android 다운로드</S.SelectOption>
-      )}
-    {props.download.ios == null ? null : (
-      <S.SelectOption>iOS 다운로드</S.SelectOption>
-      )}
- */

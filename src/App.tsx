@@ -60,12 +60,11 @@ function App() {
       setInnerWidth(window.innerWidth);
     };
     window.addEventListener("resize", resizeListener);
-    if (innerWidth < 600) {
+    if (innerWidth < 500) {
       setIsPhone(true);
     } else {
       setIsPhone(false);
     }
-    console.log(innerWidth, isPhone);
   });
 
   useEffect(() => {
@@ -97,7 +96,7 @@ function App() {
               "https://drive.google.com/uc?export=download&id=12uESJWvOHY-_4ZqTSkxIBBBYBI4zghpm",
             android:
               "https://drive.google.com/uc?export=download&id=1ClemodZvyR-sCP2lmQXPjFuIAXX_i_BT",
-            ios: null,
+            ios: "https://github.com/NOINOM/Rolling-Root-iOS",
           }}
           background={1}
           subimg={[1, 2, 3, 4]}
@@ -116,8 +115,9 @@ function App() {
             macos:
               "https://drive.google.com/uc?export=download&id=1TVQwf8FoOrzHndWYEBehQY7LQDMtpxKN",
             linux: null,
-            android: null,
-            ios: null,
+            android:
+              "https://drive.google.com/uc?export=download&id=1rP6uQKotJVygkfkyAusV95qaRX5d67f-",
+            ios: "https://github.com/NOINOM/Rolling-Root-3D-iOS",
           }}
           background={2}
           subimg={[1, 2, 3, 4]}
