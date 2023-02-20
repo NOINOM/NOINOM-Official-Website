@@ -3,9 +3,6 @@ import Arrow from "../asset/arrow-down.png";
 import BigArrow from "../asset/BigArrow.png";
 import { useState } from "react";
 import ButtonSetting from "./ButtonSetting";
-import Proj11 from "../asset/proj1/1.png";
-import Proj12 from "../asset/proj1/2.png";
-import Proj13 from "../asset/proj1/3.png";
 
 interface IProject {
   title: string;
@@ -18,7 +15,7 @@ interface IProject {
     ios: string | null;
   } | null;
   background: number;
-  subimg: number;
+  subimg: number[];
   isRight: boolean;
   index: number;
 }
@@ -53,49 +50,49 @@ const Project = (props: IProject) => {
                 />
               </S.ArrowImgNav>
               <S.OptionBar isDetail={detail}>
-                {selectTitle?.map((e) => {
-                  if (e === 0 && props.download?.windows) {
+                {selectTitle?.map((index) => {
+                  if (index === 0 && props.download?.windows) {
                     return (
                       <S.SelectOption
                         onClick={() => window.open(props.download?.windows!)}
                       >
-                        {Title[e]} 다운로드
+                        {Title[index]} 다운로드
                       </S.SelectOption>
                     );
                   }
-                  if (e === 1 && props.download?.macos) {
+                  if (index === 1 && props.download?.macos) {
                     return (
                       <S.SelectOption
                         onClick={() => window.open(props.download?.macos!)}
                       >
-                        {Title[e]} 다운로드
+                        {Title[index]} 다운로드
                       </S.SelectOption>
                     );
                   }
-                  if (e === 2 && props.download?.linux) {
+                  if (index === 2 && props.download?.linux) {
                     return (
                       <S.SelectOption
                         onClick={() => window.open(props.download?.linux!)}
                       >
-                        {Title[e]} 다운로드
+                        {Title[index]} 다운로드
                       </S.SelectOption>
                     );
                   }
-                  if (e === 3 && props.download?.android) {
+                  if (index === 3 && props.download?.android) {
                     return (
                       <S.SelectOption
                         onClick={() => window.open(props.download?.android!)}
                       >
-                        {Title[e]} 다운로드
+                        {Title[index]} 다운로드
                       </S.SelectOption>
                     );
                   }
-                  if (e === 4 && props.download?.ios) {
+                  if (index === 4 && props.download?.ios) {
                     return (
                       <S.SelectOption
                         onClick={() => window.open(props.download?.ios!)}
                       >
-                        {Title[e]} 다운로드
+                        {Title[index]} 다운로드
                       </S.SelectOption>
                     );
                   }
@@ -116,11 +113,13 @@ const Project = (props: IProject) => {
           />
         )}
         <S.SubImgWarp>
-          <S.SubImg src={Proj11} alt="s" />
-          <S.SubImg src={Proj12} alt="s" />
-          <S.SubImg src={Proj13} alt="s" />
+          {props.subimg.map((index) => {
+            return (
+              <S.SubImg background={props.background} subimg={index}></S.SubImg>
+            );
+          })}
         </S.SubImgWarp>
-        {subIdx === props.subimg ? (
+        {subIdx === props.subimg.length ? (
           <S.SubImgNoneArrowImg />
         ) : (
           <S.SubImgArrowImg

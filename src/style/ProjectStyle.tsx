@@ -10,7 +10,13 @@ interface IBackground {
 export const BackgorundImg = styled.div`
   width: 100%;
   background-image: url(${(props: IBackground) =>
-    props.background == 1 ? `${BackgroundImg1}` : `${BackgroundImg2}`});
+    props.background === 1
+      ? `${BackgroundImg1}`
+      : props.background === 2
+      ? `${BackgroundImg2}`
+      : props.background === 3
+      ? null
+      : null});
   height: 46rem;
   color: white;
   font-family: "Regular";
@@ -107,10 +113,15 @@ export const SubImgWarp = styled.nav`
   display: flex;
 `;
 
-export const SubImg = styled.img`
+interface ISubImg {
+  background: number;
+  subimg: number;
+}
+
+export const SubImg = styled.div`
   width: 28.125rem;
   height: 21.875rem;
-  opacity: 1;
+  background-image: ${(props: ISubImg) => (props.subimg ? null : null)};
 `;
 
 export const SubImgFrame = styled.div`
