@@ -1,5 +1,3 @@
-import React from "react";
-
 const ButtonSetting = (idx: number) => {
   if (idx === 1) {
     return [0, 1, 2, 3, 4];
