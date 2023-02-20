@@ -69,6 +69,7 @@ function App() {
       <button
         onClick={() => {
           CheckOS(setIndex);
+          console.log(index);
         }}
       >
         app
