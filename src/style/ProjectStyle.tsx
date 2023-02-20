@@ -1,10 +1,16 @@
 import styled from "styled-components";
 import "./index.css";
 import BackgroundImg1 from "../asset/Background1.png";
+import BackgroundImg2 from "../asset/Background2.png";
+
+interface IBackground {
+  background: number;
+}
 
 export const BackgorundImg = styled.div`
   width: 100%;
-  background-image: url(${BackgroundImg1});
+  background-image: url(${(props: IBackground) =>
+    props.background == 1 ? `${BackgroundImg1}` : `${BackgroundImg2}`});
   height: 46rem;
   color: white;
   font-family: "Regular";
@@ -19,7 +25,6 @@ interface IisRight {
 }
 
 export const ProjTitle = styled.p`
-  background-color: gray;
   width: 30rem;
   font-size: 3.5rem;
   font-weight: bold;
@@ -30,7 +35,6 @@ export const ProjTitle = styled.p`
 
 export const ProjContext = styled.p`
   width: 30rem;
-  background-color: gray;
   word-break: keep-all;
   font-size: 1.5rem;
   float: ${(props: IisRight) => (props.isRight ? "right" : "left")};
@@ -50,16 +54,6 @@ export const TitleNav = styled.nav`
   height: 50%;
   position: absolute;
   margin: ${(props: IisRight) => (props.isRight ? "60%" : "10%")};
-`;
-
-export const Select = styled.div`
-  font-size: 1.2rem;
-  width: 14rem;
-  padding: 1rem;
-  background-color: #183761;
-  font-weight: bold;
-  color: white;
-  border: none;
 `;
 
 export const SelectOption = styled.nav`
@@ -97,4 +91,45 @@ export const ArrowImg = styled.img`
   transition: 0.5s;
   transform: ${(props: IisDetail) =>
     props.isDetail ? `rotate(180deg)` : `rotate(0deg)`};
+`;
+
+export const OptionBar = styled.div`
+  height: ${(props: IisDetail) => (props.isDetail ? "18.4rem" : "3.5rem")};
+  justify-content: space-between;
+  overflow: hidden;
+  transition: 1s;
+`;
+
+export const SubImgWarp = styled.nav`
+  width: 28.125rem;
+  height: 21.875rem;
+  overflow: hidden;
+  display: flex;
+`;
+
+export const SubImg = styled.img`
+  width: 28.125rem;
+  height: 21.875rem;
+  opacity: 1;
+`;
+
+export const SubImgFrame = styled.div`
+  position: absolute;
+  margin-left: ${(props: IisRight) => (props.isRight ? "5%" : "50%")};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const SubImgArrowImg = styled.img`
+  height: 4rem;
+  width: 5rem;
+  transition: 0.5s;
+  transform: ${(props: IisRight) =>
+    props.isRight ? "rotate(90deg)" : "rotate(270deg)"};
+`;
+
+export const SubImgNoneArrowImg = styled.div`
+  height: 4rem;
+  width: 5rem;
 `;
