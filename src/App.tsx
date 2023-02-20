@@ -52,79 +52,104 @@ function App() {
   const onProj4Click = () => {
     proj4.current?.scrollIntoView({ behavior: "smooth" });
   };
+  const [innerWidth, setInnerWidth] = useState(window.innerWidth);
+  const [isPhone, setIsPhone] = useState<boolean>(false);
 
   useEffect(() => {
-    document.getElementById("app")?.scrollTo(0, 0);
+    const resizeListener = () => {
+      setInnerWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", resizeListener);
+    if (innerWidth < 600) {
+      setIsPhone(true);
+    } else {
+      setIsPhone(false);
+    }
+    console.log(innerWidth, isPhone);
+  });
+
+  useEffect(() => {
     CheckOS(setIndex);
   }, []);
 
   return (
     <>
       <Header
+        isPhone={isPhone}
         Proj1Click={onProj1Click}
         Proj2Click={onProj2Click}
         Proj3Click={onProj3Click}
         Proj4Click={onProj4Click}
       ></Header>
-      <MainIntoduce></MainIntoduce>
-      <MainBottomBar></MainBottomBar>
+      <MainIntoduce isPhone={isPhone}></MainIntoduce>
+      <MainBottomBar isPhone={isPhone}></MainBottomBar>
       <div ref={proj1}>
         <Project
+          isPhone={isPhone}
           title="Rolling Root"
           context="Unity2D를 사용해 개발한 Rolling Root는 조근호를 굴리는 게임입니다."
           download={{
-            windows: "https://www.naver.com",
-            macos: "https://www.google.com",
-            linux: null,
-            android: "https://www.youtube.com",
+            windows:
+              "https://drive.google.com/uc?export=download&id=1yr57FH3bAK-XtILQxCaZ2Cc8wNsqjpYk",
+            macos:
+              "https://drive.google.com/uc?export=download&id=1NhRKV2Z1vBbFo0jFBpGcNV_1sCCHR_e-",
+            linux:
+              "https://drive.google.com/uc?export=download&id=12uESJWvOHY-_4ZqTSkxIBBBYBI4zghpm",
+            android:
+              "https://drive.google.com/uc?export=download&id=1ClemodZvyR-sCP2lmQXPjFuIAXX_i_BT",
             ios: null,
           }}
           background={1}
-          subimg={[1, 2, 3]}
+          subimg={[1, 2, 3, 4]}
           isRight={false}
           index={index}
         ></Project>
       </div>
       <div ref={proj2}>
         <Project
+          isPhone={isPhone}
           title="Rolling Root 3D"
           context="Unity3D를 사용해 개발한 Rolling Root 3D는 조근호를 3D로 굴리는 게임입니다."
-          download={null}
+          download={{
+            windows:
+              "https://drive.google.com/uc?export=download&id=18TcnFi2RmkjgtoU0Y7tzquHNtUg8xbup",
+            macos:
+              "https://drive.google.com/uc?export=download&id=1TVQwf8FoOrzHndWYEBehQY7LQDMtpxKN",
+            linux: null,
+            android: null,
+            ios: null,
+          }}
           background={2}
-          subimg={[1]}
+          subimg={[1, 2, 3, 4]}
           isRight={true}
           index={index}
         ></Project>
       </div>
       <div ref={proj3}>
         <Project
-          title="Rolling Root 3D"
-          context="Unity3D를 사용해 개발한 Rolling Root 3D는 조근호를 3D로 굴리는 게임입니다."
+          isPhone={isPhone}
+          title="돌붕이 키우기"
+          context="Unity2D를 사용해 개발한 돌붕이 키우기는 돌붕이를 키우는 게임입니다."
           download={null}
-          background={1}
-          subimg={[1, 2]}
+          background={3}
+          subimg={[1]}
           isRight={false}
           index={index}
         ></Project>
       </div>
       <div ref={proj4}>
         <Project
-          title="Rolling Root 3D"
-          context="Unity3D를 사용해 개발한 Rolling Root 3D는 조근호를 3D로 굴리는 게임입니다."
-          download={{
-            windows: "https://www.naver.com",
-            macos: "https://www.daum.net",
-            linux: "https://www.google.com",
-            android: "https://www.youtube.com",
-            ios: "https://www.laftel.net",
-          }}
-          background={2}
-          subimg={[1, 2, 3, 4, 5]}
+          isPhone={isPhone}
+          title="두근두근 개발부"
+          context={`대통령이 된 조근호가 세운 왕국 시난(しなん), 그곳의 한 고등학교 ‘시난소마고’. 주인공은 우연찮게 1학년 2학기에 이곳으로 전학을 와버리게 되는데... 과연 어떤 일이 펼쳐질까?`}
+          download={null}
+          background={4}
+          subimg={[1]}
           isRight={true}
           index={index}
         ></Project>
       </div>
-      <Footer></Footer>
+      <Footer isPhone={isPhone}></Footer>
     </>
   );
 }
