@@ -1,4 +1,4 @@
-import { SetStateAction, useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 import Header from "./components/Header";
 import MainBottomBar from "./components/MainBottomBar";
 import MainIntoduce from "./components/MainIntoduce";
@@ -37,6 +37,9 @@ const CheckOS = (setIndex: React.Dispatch<React.SetStateAction<number>>) => {
 
 function App() {
   const [index, setIndex] = useState<number>(1);
+  useEffect(() => {
+    CheckOS(setIndex);
+  }, []);
   return (
     <>
       <Header></Header>
@@ -68,7 +71,6 @@ function App() {
       ></Project>
       <button
         onClick={() => {
-          CheckOS(setIndex);
           console.log(index);
         }}
       >
