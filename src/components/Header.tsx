@@ -1,5 +1,5 @@
 import * as S from "../style/HeaderStyled";
-import Logo from "../asset/NOINOM.png";
+import Logo from "../asset/NOINOM.svg";
 
 interface IHeader {
   isPhone: boolean;

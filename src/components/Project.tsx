@@ -1,6 +1,6 @@
 import * as S from "../style/ProjectStyle";
-import Arrow from "../asset/arrow-down.png";
-import BigArrow from "../asset/BigArrow.png";
+import Arrow from "../asset/arrow-down.svg";
+import BigArrow from "../asset/BigArrow.svg";
 import { useState } from "react";
 import ButtonSetting from "../utils/ButtonSetting";
 

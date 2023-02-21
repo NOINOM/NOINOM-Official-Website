@@ -1,4 +1,4 @@
-import Logo from "../asset/NOINOM.png";
+import Logo from "../asset/NOINOM2.svg";
 import * as S from "../style/MainIntroduceStyle";
 
 interface IMainIntro {
