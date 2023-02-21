@@ -155,7 +155,7 @@ export const ArrowImg = styled.img`
   width: 1.5rem;
   transition: 0.5s;
   transform: ${(props: IisDetail) =>
-    props.isDetail ? `rotate(180deg)` : `rotate(0deg)`};
+    props.isDetail ? `rotate(0deg)` : `rotate(180deg)`};
 `;
 
 export const OptionBar = styled.div`
